@@ -24,71 +24,77 @@ class _GameScreenState extends State<GameScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Column(
-        children: <Widget>[
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              const Text(
-                'Turn: ',
-                style: TextStyle(color: Colors.red, fontSize: 30),
-              ),
-              oTurn == true
-                  ? Text(
-                      widget.player1,
-                      style: const TextStyle(fontSize: 30),
-                    )
-                  : Text(
-                      widget.player2,
-                      style: const TextStyle(fontSize: 30),
-                    ),
-            ],
-          ),
-          const SizedBox(
-            height: 50,
-          ),
-          Padding(
-            padding: const EdgeInsets.only(right: 10),
-            child: GridView.builder(
-                shrinkWrap: true,
-                physics: const NeverScrollableScrollPhysics(),
-                itemCount: 9,
-                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 3,
+    return SafeArea(
+      child: Scaffold(
+        body: Column(
+          children: <Widget>[
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const SizedBox(
+                  height: 100,
                 ),
-                itemBuilder: (BuildContext context, int index) {
-                  return GestureDetector(
-                    onTap: () {
-                      _tapped(index);
-                    },
-                    child: Container(
-                      margin: const EdgeInsetsDirectional.only(
-                          start: 10, bottom: 10),
-                      // margin: const EdgeInsets.all(8),
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(15),
-                          color: Colors.black12),
-                      child: Center(
-                        child: Text(
-                          displayElement[index],
-                          style: TextStyle(
-                            fontSize: 100,
-                            fontWeight: FontWeight.bold,
-                            color:
-                                displayElement[index] == 'X' ? xColor : oColor,
+                const Text(
+                  'Turn: ',
+                  style: TextStyle(color: Colors.red, fontSize: 30),
+                ),
+                oTurn == true
+                    ? Text(
+                        widget.player1,
+                        style: const TextStyle(fontSize: 30),
+                      )
+                    : Text(
+                        widget.player2,
+                        style: const TextStyle(fontSize: 30),
+                      ),
+              ],
+            ),
+            const SizedBox(
+              height: 50,
+            ),
+            Padding(
+              padding: const EdgeInsets.only(right: 10),
+              child: GridView.builder(
+                  shrinkWrap: true,
+                  physics: const NeverScrollableScrollPhysics(),
+                  itemCount: 9,
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 3,
+                  ),
+                  itemBuilder: (BuildContext context, int index) {
+                    return GestureDetector(
+                      onTap: () {
+                        _tapped(index);
+                      },
+                      child: Container(
+                        margin: const EdgeInsetsDirectional.only(
+                            start: 10, bottom: 10),
+                        // margin: const EdgeInsets.all(8),
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(15),
+                            color: Colors.black12),
+                        child: Center(
+                          child: Text(
+                            displayElement[index],
+                            style: TextStyle(
+                              fontSize: 80,
+                              fontWeight: FontWeight.bold,
+                              color: displayElement[index] == 'X'
+                                  ? xColor
+                                  : oColor,
+                            ),
                           ),
                         ),
                       ),
-                    ),
-                  );
-                }),
-          ),
-          const SizedBox(
-            height: 50,
-          ),
-          CustomButton(onPressed: _clearBoard, text: 'Reset Game')
-        ],
+                    );
+                  }),
+            ),
+            const SizedBox(
+              height: 50,
+            ),
+            CustomButton(onPressed: _clearBoard, text: 'Reset Game')
+          ],
+        ),
       ),
     );
   }
@@ -182,7 +188,7 @@ class _GameScreenState extends State<GameScreen> {
       animType: AnimType.rightSlide,
       title: "Draw",
       btnOk: CustomButton(
-        backgroundColor: const Color(0xff00CA71),
+        backgroundColor: Colors.blue,
         onPressed: () {
           _clearBoard();
           Navigator.pop(context);

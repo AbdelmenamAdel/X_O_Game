@@ -13,11 +13,11 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
-    Future.delayed(const Duration(seconds: 5), () {
+    Future.delayed(const Duration(seconds: 6), () {
       Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => HomeScreen(),
+            builder: (context) => const HomeScreen(),
           ));
     });
   }
@@ -31,18 +31,30 @@ class _SplashScreenState extends State<SplashScreen> {
           Lottie.asset('assets/lottie/animation_lm1tumt8.json'),
           const Row(
             mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(
-                'Tic',
-                style: TextStyle(fontSize: 24),
+            children: [],
+          ),
+          RichText(
+            text: const TextSpan(
+              text: 'Tic',
+              style: TextStyle(
+                color: Colors.black,
+                fontSize: 32,
+                fontWeight: FontWeight.bold,
               ),
-              Text(
-                'Tac',
-                style: TextStyle(color: Colors.red, fontSize: 24),
-              ),
-              Text('Toe', style: TextStyle(fontSize: 24))
-            ],
-          )
+              /*defining default style is optional */
+              children: <TextSpan>[
+                TextSpan(
+                  text: ' Tac ',
+                  style: TextStyle(
+                    color: Colors.red,
+                  ),
+                ),
+                TextSpan(
+                  text: 'Toe',
+                ),
+              ],
+            ),
+          ),
         ],
       ),
     );

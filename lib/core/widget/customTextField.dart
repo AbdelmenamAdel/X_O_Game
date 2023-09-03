@@ -1,6 +1,7 @@
 // ignore: must_be_immutable
 import 'package:flutter/material.dart';
 
+// ignore: must_be_immutable
 class CustomTextField extends StatelessWidget {
   CustomTextField({
     super.key,
@@ -69,15 +70,15 @@ class CustomTextField extends StatelessWidget {
             //     ? AppColors.deepGrey
             //     : AppColors.grey,
             filled: true,
-            border: OutlineInputBorder(
+            enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(4),
             ),
-            // focusedBorder: OutlineInputBorder(
-            //   borderRadius: BorderRadius.circular(4),
-            //   borderSide: const BorderSide(
-            //     color: AppColors.grey,
-            //   ),
-            // ),
+            focusedBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(4),
+              borderSide: const BorderSide(
+                color: Colors.black,
+              ),
+            ),
           ),
           obscureText: isPassword,
           onChanged: onChange,
